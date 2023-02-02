@@ -19,6 +19,11 @@ searchFrom.addEventListener("submit", function (event) {
   filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(keyword)
   );
+  if (searchInput.value && !filteredMovies.length) {
+    dataPanel.innerHTML = "";
+    paginator.innerHTML = "";
+    return false;
+  }
   // 重新渲染電影頁面
   renderMovieList(getMoviesByPage(1));
   // 渲染分頁器
@@ -32,6 +37,11 @@ searchInput.addEventListener("input", function () {
   filteredMovies = movies.filter((movie) =>
     movie.title.toLowerCase().includes(keyword)
   );
+  if (searchInput.value && !filteredMovies.length) {
+    dataPanel.innerHTML = "";
+    paginator.innerHTML = "";
+    return false;
+  }
   // 重新渲染電影頁面
   renderMovieList(getMoviesByPage(1));
   // 渲染分頁器
